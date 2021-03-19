@@ -1,4 +1,20 @@
-export interface Hero {
+export interface ApiResponse {
+  code: number;
+  status: string;
+  copyright: string;
+  attributionText: string;
+  attributionHTML: string;
+  data: {
+    offset: number;
+    limit: number;
+    total: number;
+    count: number;
+    results: HeroTypes[];
+  };
+  etag: string;
+}
+
+export interface HeroTypes {
   readonly id: number;
   readonly name: string;
   readonly description: string;
@@ -70,3 +86,10 @@ interface Series {
     }
   ];
 }
+
+interface MarvelError {
+  readonly code: number;
+  readonly status: string;
+}
+
+export type ApiError = import("axios").AxiosError<MarvelError>;
