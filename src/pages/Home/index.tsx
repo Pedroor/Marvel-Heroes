@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useHeroesQuery } from "../../hooks/useHeroesQuery";
+import { Image } from "react-native-expo-image-cache";
 
 import { HeroTypes } from "../../types";
 
@@ -22,12 +23,9 @@ export function Home() {
 
   return (
     <View>
-      {isError()}
       {heroesQuery.data?.data.results.map(heroe => (
         <Image
-          source={{
-            uri: `${heroe.thumbnail.path}.${heroe.thumbnail.extension}`,
-          }}
+          uri={`${heroe.thumbnail.path}.${heroe.thumbnail.extension}`}
           style={{ width: 160, height: 160 }}
         />
       ))}

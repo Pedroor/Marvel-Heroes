@@ -1,6 +1,16 @@
 import React from "react";
-import { View } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import { Details, Home, FavoritesList } from "./pages";
+
+const Stack = createStackNavigator();
 
 export default function Routes() {
-  return <View />;
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Details" component={Details} />
+      <Stack.Screen name="Favorites" component={FavoritesList} />
+    </Stack.Navigator>
+  );
 }
