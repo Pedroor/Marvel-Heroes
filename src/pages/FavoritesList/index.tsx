@@ -1,5 +1,5 @@
 import { View } from "react-native";
 
-export function FavoritsList() {
+export function FavoritesList() {
   return <View />;
 }

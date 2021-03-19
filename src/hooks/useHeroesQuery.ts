@@ -15,7 +15,6 @@ export async function fetchHeroes(ctx: QueryFunctionContext<string[]>) {
       name.length ? `nameStartsWith=${name}` : ""
     }`
   );
-  console.log("OI", data);
 
   return data;
 }
