@@ -4,7 +4,7 @@ import api from "../services/api";
 
 import { PUBLIC_KEY } from "../constants";
 import { getMd5Hash } from "../utils";
-import { ApiError, ApiResponse } from "../types";
+import { ApiError, ApiResponse } from "../common/types/Heroes";
 
 export async function fetchHeroes(ctx: QueryFunctionContext<string[]>) {
   const { hash, timestamp } = getMd5Hash();
