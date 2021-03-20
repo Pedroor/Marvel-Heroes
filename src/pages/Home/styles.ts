@@ -1,6 +1,10 @@
 import styled from "styled-components/native";
 import { TextInput } from "react-native-gesture-handler";
 
+interface OrderByButton {
+  isActive: boolean;
+}
+
 export const Container = styled.View`
   flex: 1;
   background-color: ${props => props.theme.colors.background};
@@ -28,8 +32,9 @@ export const Input = styled(TextInput)`
   width: 90%;
 `;
 
-export const Order = styled.Text`
+export const OrderByButton = styled.Text<OrderByButton>`
   ${({ theme }) => theme.textVariants.body1};
+  color: ${props => (props.isActive ? "red" : "black")};
   padding: 15px 0 0 3px;
 `;
 

@@ -8,10 +8,10 @@ import { ApiError, ApiResponse } from "../common/types/Heroes";
 
 export async function fetchHeroes(ctx: QueryFunctionContext<string[]>) {
   const { hash, timestamp } = getMd5Hash();
-  const [name, page] = ctx.queryKey;
+  const [name, orderBy, page] = ctx.queryKey;
 
   const { data } = await api.get<ApiResponse>(
-    `/characters?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}&${
+    `/characters?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}&orderBy=${orderBy}&${
       name.length ? `nameStartsWith=${name}` : ""
     }`
   );
@@ -19,8 +19,8 @@ export async function fetchHeroes(ctx: QueryFunctionContext<string[]>) {
   return data;
 }
 
-export const useHeroesQuery = (page: number, name: string) =>
-  useQuery<ApiResponse, ApiError>([name, page], fetchHeroes, {
+export const useHeroesQuery = (page: number, name: string, orderBy: string) =>
+  useQuery<ApiResponse, ApiError>([name, orderBy, page], fetchHeroes, {
     staleTime: 60000 * 60 * 12,
     keepPreviousData: true,
   });
