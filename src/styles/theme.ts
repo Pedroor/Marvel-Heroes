@@ -3,7 +3,8 @@ export default {
     background: "#f0f2f5",
     shape: "#FFFFFF",
     inputBackground: "#e7e9ee",
-    red: "#de160b",
+    red: "#F0141E",
+    skeleton: "#969590",
   },
 
   fontFamily: {
