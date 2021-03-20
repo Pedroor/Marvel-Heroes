@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useHeroesQuery } from "../../hooks/useHeroesQuery";
-import { Image } from "react-native-expo-image-cache";
+import { FontAwesome } from "@expo/vector-icons";
 
-import { HeroTypes } from "../../types";
+import MarvelLogo from "../../assets/blackLogo.png";
+
+import { Container, Header, Card, ImageCard, ImageLogo } from "./styles";
 
 export function Home() {
   const [page, setPage] = useState(0);
@@ -22,17 +24,11 @@ export function Home() {
   }
 
   return (
-    <View>
-      {heroesQuery.data?.data.results.map(heroe => (
-        <Image
-          uri={`${heroe.thumbnail.path}.${heroe.thumbnail.extension}`}
-          style={{ width: 160, height: 160 }}
-        />
-      ))}
-      <TouchableOpacity
-        onPress={isError}
-        style={{ width: 100, height: 80, backgroundColor: "red" }}
-      ></TouchableOpacity>
-    </View>
+    <Container>
+      <Header>
+        <ImageLogo uri={MarvelLogo.toString()} />
+        <FontAwesome name="search" size={24} color="black" />
+      </Header>
+    </Container>
   );
 }
