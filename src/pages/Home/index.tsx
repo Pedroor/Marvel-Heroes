@@ -5,14 +5,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 import { HeroTypes } from "../../common/types/Heroes";
 
-import {
-  Container,
-  ButtonContainer,
-  Order,
-  Input,
-  InputArea,
-  TitleName,
-} from "./styles";
+import { Container, ButtonContainer, Order, Input, InputArea } from "./styles";
 
 import { Header } from "../../components/Header";
 import { HeroCard } from "../../components/HeroCard";

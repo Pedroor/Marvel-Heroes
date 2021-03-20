@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { Details, Home, FavoritesList, Comic } from "./pages";
+import { Details, Home, FavoritesList, Comic, Initial } from "./pages";
 
 const Stack = createStackNavigator();
 
@@ -12,6 +12,7 @@ export default function Routes() {
         headerShown: false,
       }}
     >
+      <Stack.Screen name="Initial" component={Initial} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Details" component={Details} />
       <Stack.Screen name="Favorites" component={FavoritesList} />
