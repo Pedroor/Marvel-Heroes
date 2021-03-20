@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Text, FlatList, ListRenderItem, View, Image } from "react-native";
+import { FlatList, ListRenderItem, View, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { useHeroesQuery } from "../../hooks/useHeroesQuery";
 import { FontAwesome, AntDesign, Ionicons } from "@expo/vector-icons";
 import America from "../../assets/marvel.gif";
 
-import MarvelLogo from "../../assets/redLogo.png";
+import { HeroTypes } from "../../types";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 import {
   Container,
-  Header,
   Card,
   CardContent,
   ImageCard,
-  ImageLogo,
   ButtonContainer,
-  PopularButton,
-  ButtonText,
   Order,
   TitleName,
   Description,
@@ -23,14 +21,19 @@ import {
   Input,
   InputArea,
 } from "./styles";
-import { HeroTypes } from "../../types";
+
+import { Header } from "../../components/Header";
+
+const defaultDescription =
+  "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.";
 
 export function Home() {
-  const defaultDescription =
-    "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.";
   const [page, setPage] = useState(0);
   const [name, setName] = useState("");
+
   const heroesQuery = useHeroesQuery(page, name);
+
+  const navigation = useNavigation();
 
   const renderHeroeCard: ListRenderItem<HeroTypes> = ({ item }) => {
     return (
@@ -51,23 +54,27 @@ export function Home() {
                 : item.description}
             </Description>
           )}
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              position: "relative",
-            }}
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate("Details")}
           >
-            <Label>More Info</Label>
-            <AntDesign
-              name="right"
-              size={24}
-              color="black"
+            <View
               style={{
-                paddingTop: 60,
+                flexDirection: "row",
+                justifyContent: "space-between",
+                position: "relative",
               }}
-            />
-          </View>
+            >
+              <Label>More Info</Label>
+              <AntDesign
+                name="right"
+                size={24}
+                color="black"
+                style={{
+                  paddingTop: 60,
+                }}
+              />
+            </View>
+          </TouchableWithoutFeedback>
         </CardContent>
       </Card>
     );
@@ -77,37 +84,7 @@ export function Home() {
     <>
       {heroesQuery.isLoading ? (
         <Container>
-          <Header>
-            <AntDesign name="arrowleft" size={24} color="#F0141E" />
-            <FontAwesome name="search" size={24} color="black" />
-          </Header>
-          <ImageLogo source={MarvelLogo} resizeMode={"contain"} />
-          <ButtonContainer>
-            <PopularButton>
-              <ButtonText>Popular</ButtonText>
-            </PopularButton>
-            <Order>A-Z</Order>
-          </ButtonContainer>
-          <View style={{ justifyContent: "center", alignItems: "center" }}>
-            <Image source={America} style={{ width: 500, height: 500 }} />
-          </View>
-        </Container>
-      ) : (
-        <Container>
-          <Header>
-            <AntDesign name="arrowleft" size={28} color="#F0141E" />
-            <ImageLogo source={MarvelLogo} resizeMode={"contain"} />
-            <PopularButton>
-              <Ionicons
-                name="star"
-                size={22}
-                color="white"
-                style={{ paddingLeft: 8 }}
-              />
-              <ButtonText>Favorites</ButtonText>
-            </PopularButton>
-          </Header>
-
+          <Header />
           <ButtonContainer>
             <InputArea>
               <FontAwesome name="search" size={24} color="black" />
@@ -116,7 +93,24 @@ export function Home() {
                 onChangeText={value => setName(value)}
               />
             </InputArea>
-
+            <Order>A-Z</Order>
+          </ButtonContainer>
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
+            <TitleName>Loading ... </TitleName>
+            <Image source={America} style={{ width: 500, height: 500 }} />
+          </View>
+        </Container>
+      ) : (
+        <Container>
+          <Header />
+          <ButtonContainer>
+            <InputArea>
+              <FontAwesome name="search" size={24} color="black" />
+              <Input
+                placeholder="Search for..."
+                onChangeText={value => setName(value)}
+              />
+            </InputArea>
             <Order>A-Z</Order>
           </ButtonContainer>
           {heroesQuery.data?.data.results !== undefined &&

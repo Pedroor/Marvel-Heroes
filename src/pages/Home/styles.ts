@@ -9,34 +9,8 @@ export const Container = styled.View`
   margin: 8px;
 `;
 
-export const Header = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 40px;
-`;
-export const ImageLogo = styled.Image`
-  width: 120px;
-  height: 140px;
-  display: none;
-`;
 export const ButtonContainer = styled.View`
   margin: 22px;
-`;
-export const PopularButton = styled.TouchableOpacity`
-  background-color: ${props => props.theme.colors.red};
-
-  width: 160px;
-  height: 60px;
-  border-radius: 30px;
-
-  flex-direction: row;
-  align-items: center;
-`;
-export const ButtonText = styled.Text`
-  ${({ theme }) => theme.textVariants.body1};
-  color: ${props => props.theme.colors.shape};
-  padding-left: 15px;
 `;
 
 export const InputArea = styled.View`
