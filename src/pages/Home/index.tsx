@@ -32,11 +32,8 @@ export function Home() {
   const flalistRef: React.RefObject<FlatList> = useRef(null);
 
   const heroesQuery = useHeroesQuery(name, orderBy, offSet);
-  console.log(heroesQuery.isError);
-  console.log(heroesQuery);
 
   const renderHeroeCard: ListRenderItem<HeroTypes> = ({ item }) => {
-    console.log(item.comics);
     return <HeroCard item={item} />;
   };
   function orderByFunction() {

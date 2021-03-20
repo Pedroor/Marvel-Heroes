@@ -4,6 +4,9 @@ import { HeroTypes } from "../../common/types/Heroes";
 import { DEFAULT_DESCRIPTION } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
+import { View } from "react-native";
+
+import { useFavoriteHeroes } from "../../hooks/useFavoriteHeroes";
 
 import {
   Card,
@@ -22,11 +25,33 @@ interface HeroCardProps {
 export function HeroCard({ item }: HeroCardProps) {
   const navigation = useNavigation();
 
+  const { handleAddHeroToFavoriteList } = useFavoriteHeroes();
+
   return (
     <Card key={item.id}>
       <ImageCard uri={`${item.thumbnail.path}.${item.thumbnail.extension}`} />
       <CardContent>
-        <TitleName>{item.name}</TitleName>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          <TitleName>
+            {item.name.length > 13
+              ? `${item.name.substring(0, 13)}...`
+              : item.name}
+          </TitleName>
+          <AntDesign
+            name="staro"
+            size={24}
+            color="black"
+            style={{ padding: 8 }}
+            onPress={() => handleAddHeroToFavoriteList(item)}
+          />
+        </View>
+
         {item.description.length === 0 ? (
           <Description>
             {DEFAULT_DESCRIPTION.length > 80

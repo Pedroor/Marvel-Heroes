@@ -19,8 +19,9 @@ export const CardContent = styled.View`
 `;
 
 export const TitleName = styled.Text`
-  ${({ theme }) => theme.textVariants.title};
+  ${({ theme }) => theme.textVariants.body2};
   padding: 10px 0 0 10px;
+  font-weight: bold;
 `;
 
 export const Label = styled.Text`
@@ -44,4 +45,6 @@ export const DetailsButton = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;
   position: relative;
+  bottom: 0px;
+  top: -20px;
 `;

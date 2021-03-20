@@ -8,7 +8,7 @@ export const MainHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 30px;
 `;
 
 export const FavoritesButton = styled.TouchableOpacity<FavoritesButton>`

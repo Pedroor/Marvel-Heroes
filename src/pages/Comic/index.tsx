@@ -7,6 +7,8 @@ import { ComicImage, Container, ComicTitle, ComicDescription } from "./styles";
 
 import { Header } from "../../components/Header";
 
+import { DEFAULT_DESCRIPTION } from "../../constants/index";
+
 type ParamList = {
   Details: {
     item: ComicsTypes;
@@ -25,7 +27,11 @@ export function Comic() {
         uri={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
       />
 
-      <ComicDescription>{comic.description}</ComicDescription>
+      <ComicDescription>
+        {comic.description?.length > 0
+          ? comic.description
+          : DEFAULT_DESCRIPTION}
+      </ComicDescription>
       <ComicTitle> </ComicTitle>
     </Container>
   );

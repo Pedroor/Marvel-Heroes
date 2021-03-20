@@ -62,7 +62,9 @@ export function Details() {
       <Header hasButton={false} />
       <HeroImage uri={`${hero.thumbnail.path}.${hero.thumbnail.extension}`} />
       <Title>{hero.name}</Title>
-      <Description>{DEFAULT_DESCRIPTION}</Description>
+      <Description>
+        {hero.description.length > 0 ? hero.description : DEFAULT_DESCRIPTION}
+      </Description>
       <Label>Comics</Label>
       <FlatList
         data={useHeroComics.data?.data.results}
