@@ -28,7 +28,7 @@ export default {
     body2: {
       fontSize: "16px",
       fontFamily: "Montserrat_400Regular",
-      lineHeight: "22px",
+      lineHeight: "20px",
     },
     body3: {
       fontSize: "14px",

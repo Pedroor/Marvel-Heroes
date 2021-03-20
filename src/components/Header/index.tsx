@@ -3,7 +3,10 @@ import { MainHeader, FavoritesButton, ButtonText } from "./styles";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-export function Header() {
+interface HeaderProps {
+  hasButton: boolean;
+}
+export function Header({ hasButton }: HeaderProps) {
   const navigation = useNavigation();
 
   return (
@@ -14,7 +17,7 @@ export function Header() {
         color="#F0141E"
         onPress={() => navigation.goBack()}
       />
-      <FavoritesButton>
+      <FavoritesButton hasButton={hasButton || false}>
         <Ionicons
           name="star"
           size={22}

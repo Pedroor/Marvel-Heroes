@@ -1,5 +1,9 @@
 import styled from "styled-components/native";
 
+interface FavoritesButton {
+  hasButton: boolean;
+}
+
 export const MainHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -7,8 +11,9 @@ export const MainHeader = styled.View`
   margin-top: 40px;
 `;
 
-export const FavoritesButton = styled.TouchableOpacity`
+export const FavoritesButton = styled.TouchableOpacity<FavoritesButton>`
   background-color: ${props => props.theme.colors.red};
+  display: ${props => (props.hasButton ? "flex" : "none")};
 
   width: 160px;
   height: 60px;

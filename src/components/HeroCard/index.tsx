@@ -40,7 +40,7 @@ export function HeroCard({ item }: HeroCardProps) {
               : item.description}
           </Description>
         )}
-        <DetailsButton onPress={() => navigation.navigate("Details")}>
+        <DetailsButton onPress={() => navigation.navigate("Details", { item })}>
           <Label>More Info</Label>
           <AntDesign
             name="right"

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { FlatList, ListRenderItem, View, Image } from "react-native";
+import { FlatList, ListRenderItem } from "react-native";
 import { useHeroesQuery } from "../../hooks/useHeroesQuery";
 import { FontAwesome } from "@expo/vector-icons";
-import America from "../../assets/marvel.gif";
 
 import { HeroTypes } from "../../common/types/Heroes";
 
@@ -10,13 +9,14 @@ import {
   Container,
   ButtonContainer,
   Order,
-  TitleName,
   Input,
   InputArea,
+  TitleName,
 } from "./styles";
 
 import { Header } from "../../components/Header";
 import { HeroCard } from "../../components/HeroCard";
+import { Loading } from "../../components/Loading";
 
 export function Home() {
   const [page, setPage] = useState(0);
@@ -33,48 +33,51 @@ export function Home() {
     <>
       {heroesQuery.isLoading ? (
         <Container>
-          <Header />
+          <Header hasButton={true} />
           <ButtonContainer>
             <InputArea>
               <FontAwesome name="search" size={24} color="black" />
               <Input
+                value={name}
                 placeholder="Search for..."
                 onChangeText={value => setName(value)}
               />
             </InputArea>
             <Order>A-Z</Order>
           </ButtonContainer>
-          <View style={{ justifyContent: "center", alignItems: "center" }}>
-            <TitleName>Loading ... </TitleName>
-            <Image source={America} style={{ width: 500, height: 500 }} />
-          </View>
+          <Loading title={"Loading ..."} />
         </Container>
       ) : (
         <Container>
-          <Header />
+          <Header hasButton={true} />
           <ButtonContainer>
             <InputArea>
               <FontAwesome name="search" size={24} color="black" />
               <Input
+                value={name}
                 placeholder="Search for..."
                 onChangeText={value => setName(value)}
+              />
+              <FontAwesome
+                name="trash-o"
+                size={24}
+                color="black"
+                onPress={() => setName("")}
               />
             </InputArea>
             <Order>A-Z</Order>
           </ButtonContainer>
+
           {heroesQuery.data?.data.results !== undefined &&
-            (heroesQuery.data?.data.results.length > 0 ? (
+            (heroesQuery.data?.data.results?.length === 0 ? (
+              <Loading title={"Nothing found ):"} />
+            ) : (
               <FlatList
                 data={heroesQuery.data?.data.results}
                 renderItem={renderHeroeCard}
                 showsVerticalScrollIndicator={false}
                 style={{ marginBottom: 10 }}
               />
-            ) : (
-              <View style={{ justifyContent: "center", alignItems: "center" }}>
-                <TitleName>Nothing found ):</TitleName>
-                <Image source={America} style={{ width: 500, height: 500 }} />
-              </View>
             ))}
         </Container>
       )}
