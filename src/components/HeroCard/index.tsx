@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { HeroTypes } from "../../common/types/Heroes";
 import { DEFAULT_DESCRIPTION } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Entypo } from "@expo/vector-icons";
 import { View } from "react-native";
 
 import { useFavoriteHeroes } from "../../hooks/useFavoriteHeroes";
@@ -24,8 +24,22 @@ interface HeroCardProps {
 
 export function HeroCard({ item }: HeroCardProps) {
   const navigation = useNavigation();
+  const [isColorStar, setIsColorStar] = useState(false);
 
-  const { handleAddHeroToFavoriteList } = useFavoriteHeroes();
+  const { handleAddHeroToFavoriteList, favoriteHeroes } = useFavoriteHeroes();
+
+  useEffect(() => {
+    haveThisHeroInList(item);
+  }, [favoriteHeroes]);
+
+  function haveThisHeroInList(hero: HeroTypes) {
+    let existingHero = favoriteHeroes.find(heroList => heroList.id === hero.id);
+    if (existingHero) {
+      setIsColorStar(true);
+    } else {
+      setIsColorStar(false);
+    }
+  }
 
   return (
     <Card key={item.id}>
@@ -43,13 +57,23 @@ export function HeroCard({ item }: HeroCardProps) {
               ? `${item.name.substring(0, 13)}...`
               : item.name}
           </TitleName>
-          <AntDesign
-            name="staro"
-            size={24}
-            color="black"
-            style={{ padding: 8 }}
-            onPress={() => handleAddHeroToFavoriteList(item)}
-          />
+          {favoriteHeroes ? (
+            <Entypo
+              name="star"
+              size={24}
+              color={isColorStar ? "#eaf754" : "black"}
+              style={{ padding: 8 }}
+              onPress={() => handleAddHeroToFavoriteList(item)}
+            />
+          ) : (
+            <Entypo
+              name="star"
+              size={24}
+              color={"black"}
+              style={{ padding: 8 }}
+              onPress={() => handleAddHeroToFavoriteList(item)}
+            />
+          )}
         </View>
 
         {item.description.length === 0 ? (

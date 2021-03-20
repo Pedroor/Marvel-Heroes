@@ -17,7 +17,10 @@ export function Header({ hasButton }: HeaderProps) {
         color="#F0141E"
         onPress={() => navigation.goBack()}
       />
-      <FavoritesButton hasButton={hasButton || false}>
+      <FavoritesButton
+        hasButton={hasButton || false}
+        onPress={() => navigation.navigate("Favorites")}
+      >
         <Ionicons
           name="star"
           size={22}

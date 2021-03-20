@@ -23,11 +23,9 @@ export function FavoriteHeroesProvider({
   const [favoriteHeroes, setFavoriteHeroes] = useState<HeroTypes[]>([]);
 
   function handleAddHeroToFavoriteList(hero: HeroTypes) {
-    let existingProduct = favoriteHeroes.find(
-      heroList => heroList.id === hero.id
-    );
+    let existingHero = favoriteHeroes.find(heroList => heroList.id === hero.id);
 
-    if (!existingProduct) {
+    if (!existingHero) {
       Alert.alert(
         `Do you want to add ${hero.name} on your hero favorites?`,
         "",

@@ -33,7 +33,7 @@ export function Home() {
 
   const heroesQuery = useHeroesQuery(name, orderBy, offSet);
 
-  const renderHeroeCard: ListRenderItem<HeroTypes> = ({ item }) => {
+  const renderHeroCard: ListRenderItem<HeroTypes> = ({ item }) => {
     return <HeroCard item={item} />;
   };
   function orderByFunction() {
@@ -110,7 +110,7 @@ export function Home() {
             ) : (
               <FlatList
                 data={heroesQuery.data?.data.results}
-                renderItem={renderHeroeCard}
+                renderItem={renderHeroCard}
                 showsVerticalScrollIndicator={false}
                 ref={flalistRef}
                 style={{ marginBottom: 10 }}
