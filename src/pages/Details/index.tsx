@@ -1,9 +1,13 @@
 import React from "react";
 import { Header } from "../../components/Header";
 import { useHeroComicsQuery } from "../../hooks/useHeroComics";
-import { RouteProp } from "@react-navigation/native";
-import { useRoute } from "@react-navigation/native";
-import { FlatList, ListRenderItem, View } from "react-native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import {
+  FlatList,
+  ListRenderItem,
+  View,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 import { DEFAULT_DESCRIPTION } from "../../constants/index";
 
@@ -14,6 +18,7 @@ import {
   Container,
   Label,
   ComicImage,
+  ComicTitle,
 } from "./styles";
 import { HeroTypes } from "../../common/types/Heroes";
 import { ComicsTypes } from "../../common/types/Comics";
@@ -31,16 +36,20 @@ export function Details() {
 
   const useHeroComics = useHeroComicsQuery(0, hero.id);
 
-  console.log(useHeroComics.data?.data.results);
-  console.log(useHeroComics);
+  const navigation = useNavigation();
 
   const renderComicCard: ListRenderItem<ComicsTypes> = ({ item }) => {
     return (
-      <View>
-        <ComicImage
-          uri={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-        />
-      </View>
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate("Comic", { item })}
+      >
+        <View key={item.id} style={{ width: 140 }}>
+          <ComicImage
+            uri={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+          />
+          <ComicTitle>{item.title}</ComicTitle>
+        </View>
+      </TouchableWithoutFeedback>
     );
   };
 

@@ -10,7 +10,7 @@ export const Container = styled.View`
 export const HeroImage = styled(Image)`
   margin-bottom: 15px;
   width: 100%;
-  height: 260px;
+  height: 230px;
 `;
 
 export const Description = styled.Text`
@@ -25,12 +25,22 @@ export const Title = styled.Text`
 
 export const Label = styled.Text`
   ${({ theme }) => theme.textVariants.body2};
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px 0 0 10px;
+  font-weight: bold;
+`;
+
+export const ComicTitle = styled.Text`
+  ${({ theme }) => theme.textVariants.body3};
+  display: flex;
+  flex-wrap: wrap;
   padding: 2px 0 0 10px;
   font-weight: bold;
 `;
 
 export const ComicImage = styled(Image)`
   margin: 8px 0 15px 15px;
-  width: 90;
-  height: 90px;
+  width: 120;
+  height: 120px;
 `;
