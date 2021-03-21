@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { s } from "react-native-size-matters";
 
 interface FavoritesButton {
   hasButton: boolean;
@@ -26,4 +27,9 @@ export const ButtonText = styled.Text`
   ${({ theme }) => theme.textVariants.body1};
   color: ${props => props.theme.colors.shape};
   padding-left: 15px;
+`;
+
+export const MarvelLogo = styled.Image`
+  width: ${s(90)};
+  height: ${s(90)};
 `;

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "../../components/Header";
 import { useHeroComicsQuery } from "../../hooks/useHeroComics";
+import { Entypo } from "@expo/vector-icons";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { s } from "react-native-size-matters";
 import {
@@ -11,6 +12,8 @@ import {
 } from "react-native";
 
 import { DEFAULT_DESCRIPTION } from "../../constants/index";
+
+import { useFavoriteHeroes } from "../../hooks/useFavoriteHeroes";
 
 import {
   HeroImage,
@@ -35,9 +38,25 @@ export function Details() {
   const route = useRoute<RouteProp<ParamList, "Details">>();
   const hero = route.params.item;
 
+  const [isColorStar, setIsColorStar] = useState(false);
+
   const useHeroComics = useHeroComicsQuery(0, hero.id);
+  const { favoriteHeroes, handleAddHeroToFavoriteList } = useFavoriteHeroes();
 
   const navigation = useNavigation();
+
+  useEffect(() => {
+    haveThisHeroInList(hero);
+  }, [favoriteHeroes]);
+
+  function haveThisHeroInList(hero: HeroTypes) {
+    let existingHero = favoriteHeroes.find(heroList => heroList.id === hero.id);
+    if (existingHero) {
+      setIsColorStar(true);
+    } else {
+      setIsColorStar(false);
+    }
+  }
 
   const renderComicCard: ListRenderItem<ComicsTypes> = ({ item }) => {
     return (
@@ -53,6 +72,7 @@ export function Details() {
             useNativeDriver
             duration={1500}
           />
+
           <ComicTitle>{item.title}</ComicTitle>
         </View>
       </TouchableWithoutFeedback>
@@ -65,14 +85,23 @@ export function Details() {
 
   return (
     <Container>
-      <Header hasButton={false} />
+      <Header hasButton={false} hasGoBackButton={true} />
       <HeroImage
         source={{ uri: `${hero.thumbnail.path}.${hero.thumbnail.extension}` }}
         animation="slideInRight"
         useNativeDriver
         duration={1500}
       />
-      <Title>{hero.name}</Title>
+      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        <Title>{hero.name}</Title>
+        <Entypo
+          name="star"
+          size={24}
+          color={isColorStar ? "#eaf754" : "black"}
+          style={{ padding: s(8) }}
+          onPress={() => handleAddHeroToFavoriteList(hero)}
+        />
+      </View>
       <Description>
         {hero.description.length > 0 ? hero.description : DEFAULT_DESCRIPTION}
       </Description>

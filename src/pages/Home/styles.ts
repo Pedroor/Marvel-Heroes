@@ -1,7 +1,5 @@
 import styled from "styled-components/native";
 import { TextInput } from "react-native-gesture-handler";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { s } from "react-native-size-matters";
 
 interface OrderByButton {
   isActive: boolean;

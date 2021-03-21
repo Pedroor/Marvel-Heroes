@@ -21,7 +21,7 @@ export function Comic() {
 
   return (
     <Container>
-      <Header hasButton={false} />
+      <Header hasButton={false} hasGoBackButton={true} />
       <ComicTitle>{comic.title}</ComicTitle>
       <ComicImage
         source={{ uri: `${comic.thumbnail.path}.${comic.thumbnail.extension}` }}

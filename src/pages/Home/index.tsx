@@ -47,7 +47,8 @@ export function Home() {
   const renderHeroCard: ListRenderItem<HeroTypes> = ({ item }) => {
     return <HeroCard item={item} />;
   };
-  function orderByFunction() {
+
+  function handleOrderByFunction() {
     if (orderBy.length === 4) {
       setOrderBy("-name");
       setOrderByButtonIsActive(true);
@@ -75,7 +76,7 @@ export function Home() {
     <>
       {heroesQuery.isLoading ? (
         <Container>
-          <Header hasButton={true} />
+          <Header hasButton={true} hasGoBackButton={false} />
           <ButtonContainer>
             <InputArea>
               <FontAwesome name="search" size={24} color="black" />
@@ -91,7 +92,7 @@ export function Home() {
         </Container>
       ) : (
         <Container>
-          <Header hasButton={true} />
+          <Header hasButton={true} hasGoBackButton={false} />
           <ButtonContainer>
             <InputArea>
               <FontAwesome name="search" size={24} color="black" />
@@ -108,7 +109,7 @@ export function Home() {
               />
             </InputArea>
             <OrderByButton
-              onPress={() => orderByFunction()}
+              onPress={() => handleOrderByFunction()}
               isActive={orderByButtonIsActive}
             >
               A-Z

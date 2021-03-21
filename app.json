@@ -20,7 +20,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "marvel.Heroes"
     },
     "web": {
       "favicon": "./assets/favicon.png"

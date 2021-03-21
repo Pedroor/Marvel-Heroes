@@ -1,22 +1,30 @@
 import React from "react";
-import { MainHeader, FavoritesButton, ButtonText } from "./styles";
+import { MainHeader, FavoritesButton, ButtonText, MarvelLogo } from "./styles";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
+import blackLogo from "../../assets/blackLogo.png";
+
 interface HeaderProps {
   hasButton: boolean;
+  hasGoBackButton: boolean;
 }
-export function Header({ hasButton }: HeaderProps) {
+export function Header({ hasButton, hasGoBackButton }: HeaderProps) {
   const navigation = useNavigation();
 
   return (
     <MainHeader>
-      <AntDesign
-        name="arrowleft"
-        size={32}
-        color="#F0141E"
-        onPress={() => navigation.goBack()}
-      />
+      {hasGoBackButton ? (
+        <AntDesign
+          name="arrowleft"
+          size={32}
+          color="#F0141E"
+          onPress={() => navigation.goBack()}
+        />
+      ) : (
+        <MarvelLogo source={blackLogo} resizeMode={"contain"} />
+      )}
+
       <FavoritesButton
         hasButton={hasButton || false}
         onPress={() => navigation.navigate("Favorites")}

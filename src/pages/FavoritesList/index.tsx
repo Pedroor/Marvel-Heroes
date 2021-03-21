@@ -1,6 +1,5 @@
 import React from "react";
 import { FlatList, ListRenderItem, Alert } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
 import { useFavoriteHeroes } from "../../hooks/useFavoriteHeroes";
 
 import { Header } from "../../components/Header";
@@ -52,7 +51,7 @@ export function FavoritesList() {
     <Container>
       {favoriteHeroes.length > 0 ? (
         <>
-          <Header hasButton={false} />
+          <Header hasButton={false} hasGoBackButton={true} />
           <Title>Favorites List</Title>
           <MarvelImage source={marvelImage} resizeMode={"contain"} />
           <ShareMessage>
@@ -71,7 +70,7 @@ export function FavoritesList() {
         </>
       ) : (
         <>
-          <Header hasButton={false} />
+          <Header hasButton={false} hasGoBackButton={true} />
           <Title>Favorites List</Title>
           <MarvelImage source={marvelImage} resizeMode={"contain"} />
           <Loading title={"Add new heroes to your list!"} />
