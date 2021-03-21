@@ -22,5 +22,4 @@ export async function fetchHeroes(ctx: QueryFunctionContext<string[]>) {
 export const useHeroesQuery = (name: string, orderBy: string, offSet: number) =>
   useQuery<ApiResponse, ApiError>([name, orderBy, offSet], fetchHeroes, {
     staleTime: 60000 * 60 * 12,
-    keepPreviousData: true,
   });

@@ -20,5 +20,4 @@ export async function fetchHeroComics(ctx: QueryFunctionContext<string[]>) {
 export const useHeroComicsQuery = (page: number, id: number) =>
   useQuery<ApiResponse, ApiError>([id, page], fetchHeroComics, {
     staleTime: 60000 * 60 * 12,
-    keepPreviousData: true,
   });

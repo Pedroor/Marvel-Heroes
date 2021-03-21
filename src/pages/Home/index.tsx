@@ -5,9 +5,12 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import { useHeroesQuery } from "../../hooks/useHeroesQuery";
+import { s } from "react-native-size-matters";
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
+import NotFound from "../../assets/notFound.gif";
 
 import { HeroTypes } from "../../common/types/Heroes";
 
@@ -17,6 +20,7 @@ import {
   OrderByButton,
   Input,
   InputArea,
+  TitleName,
 } from "./styles";
 
 import { Header } from "../../components/Header";
@@ -113,7 +117,19 @@ export function Home() {
 
           {heroesQuery.data?.data.results !== undefined &&
             (heroesQuery.data?.data.results?.length === 0 ? (
-              <Loading title={"Nothing found ):"} />
+              <View
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <TitleName>Not Found ): </TitleName>
+                <Image
+                  source={NotFound}
+                  style={{ width: s(300), height: s(300) }}
+                />
+              </View>
             ) : (
               <FlatList
                 data={heroesQuery.data?.data.results}
