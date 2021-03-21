@@ -14,7 +14,8 @@
 </p>
 
 <h1 align="center">
- 
+ <img alt="Home" src="https://media.tenor.com/images/b705d5681438f3ef56611f87fa707704/tenor.gif" width="400" />
+  <img alt="FavoritList" src="https://s4.gifyu.com/images/secondcb32bd5d7ba9f11e.gif" width="400" />
 </h1>
 
 ## :page_with_curl: Sobre
