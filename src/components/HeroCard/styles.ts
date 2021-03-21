@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { Image } from "react-native-expo-image-cache";
 
 export const Card = styled.View`
   width: 90%;
@@ -35,7 +34,7 @@ export const Description = styled.Text`
   padding: 30px 0 0 10px;
 `;
 
-export const ImageCard = styled(Image)`
+export const ImageCard = styled.Image`
   width: 200px;
   height: 240px;
   border-radius: 15px;

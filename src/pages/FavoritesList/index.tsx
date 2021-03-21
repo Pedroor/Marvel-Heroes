@@ -5,16 +5,22 @@ import { useFavoriteHeroes } from "../../hooks/useFavoriteHeroes";
 import { Header } from "../../components/Header";
 import { Loading } from "../../components/Loading";
 import { HeroCard } from "../../components/HeroCard";
-
+import { AntDesign } from "@expo/vector-icons";
 import marvelImage from "../../assets/redLogo.png";
 
 import { HeroTypes } from "../../common/types/Heroes";
-import { useHeroesQuery } from "../../hooks/useHeroesQuery";
 
-import { Container, Title, MarvelImage } from "./styles";
+import {
+  Container,
+  Title,
+  MarvelImage,
+  ShareButton,
+  ButtonText,
+  ShareMessage,
+} from "./styles";
 
 export function FavoritesList() {
-  const { favoriteHeroes } = useFavoriteHeroes();
+  const { favoriteHeroes, createPDF } = useFavoriteHeroes();
 
   const renderHeroCard: ListRenderItem<HeroTypes> = ({ item }) => {
     return <HeroCard item={item} />;
@@ -27,6 +33,13 @@ export function FavoritesList() {
           <Header hasButton={false} />
           <Title>Favorites List</Title>
           <MarvelImage source={marvelImage} resizeMode={"contain"} />
+          <ShareMessage>
+            Do you want to share your list with your friends?
+          </ShareMessage>
+          <ShareButton onPress={() => createPDF()}>
+            <AntDesign name="sharealt" size={24} color="white" />
+            <ButtonText>Share</ButtonText>
+          </ShareButton>
           <FlatList
             data={favoriteHeroes}
             renderItem={renderHeroCard}

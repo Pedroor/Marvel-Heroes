@@ -5,6 +5,7 @@ export default {
     inputBackground: "#e7e9ee",
     red: "#F0141E",
     skeleton: "#969590",
+    blue: "#1851ad",
   },
 
   fontFamily: {

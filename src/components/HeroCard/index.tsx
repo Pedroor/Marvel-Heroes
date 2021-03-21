@@ -43,7 +43,9 @@ export function HeroCard({ item }: HeroCardProps) {
 
   return (
     <Card key={item.id}>
-      <ImageCard uri={`${item.thumbnail.path}.${item.thumbnail.extension}`} />
+      <ImageCard
+        source={{ uri: `${item.thumbnail.path}.${item.thumbnail.extension}` }}
+      />
       <CardContent>
         <View
           style={{

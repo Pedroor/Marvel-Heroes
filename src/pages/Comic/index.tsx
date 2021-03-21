@@ -24,7 +24,7 @@ export function Comic() {
       <Header hasButton={false} />
       <ComicTitle>{comic.title}</ComicTitle>
       <ComicImage
-        uri={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+        source={{ uri: `${comic.thumbnail.path}.${comic.thumbnail.extension}` }}
       />
 
       <ComicDescription>

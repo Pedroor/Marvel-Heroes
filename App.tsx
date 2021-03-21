@@ -15,7 +15,6 @@ import {
 } from "@expo-google-fonts/montserrat";
 import theme from "./src/styles/theme";
 import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
 import { FavoriteHeroesProvider } from "./src/hooks/useFavoriteHeroes";
 
 import { queryClient } from "./src/services/query-client";
@@ -31,7 +30,6 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <StatusBar style="dark" backgroundColor="#f0f2f5" translucent />
       <QueryClientProvider client={queryClient}>
         <FavoriteHeroesProvider>
           <ThemeProvider theme={theme}>

@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { Image } from "react-native-expo-image-cache";
 
 export const Container = styled.ScrollView`
   flex: 1;
@@ -7,7 +6,7 @@ export const Container = styled.ScrollView`
   padding-top: 20px;
 `;
 
-export const ComicImage = styled(Image)`
+export const ComicImage = styled.Image`
   padding-top: 20px;
   width: 100%;
   height: 700px;

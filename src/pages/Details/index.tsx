@@ -45,7 +45,9 @@ export function Details() {
       >
         <View key={item.id} style={{ width: 140 }}>
           <ComicImage
-            uri={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+            source={{
+              uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+            }}
           />
           <ComicTitle>{item.title}</ComicTitle>
         </View>
@@ -60,7 +62,9 @@ export function Details() {
   return (
     <Container>
       <Header hasButton={false} />
-      <HeroImage uri={`${hero.thumbnail.path}.${hero.thumbnail.extension}`} />
+      <HeroImage
+        source={{ uri: `${hero.thumbnail.path}.${hero.thumbnail.extension}` }}
+      />
       <Title>{hero.name}</Title>
       <Description>
         {hero.description.length > 0 ? hero.description : DEFAULT_DESCRIPTION}

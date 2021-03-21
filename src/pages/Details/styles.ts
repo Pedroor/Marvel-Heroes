@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { Image } from "react-native-expo-image-cache";
 
 export const Container = styled.View`
   flex: 1;
@@ -7,7 +6,7 @@ export const Container = styled.View`
   padding-top: 20px;
 `;
 
-export const HeroImage = styled(Image)`
+export const HeroImage = styled.Image`
   margin-bottom: 15px;
   width: 100%;
   height: 230px;
@@ -38,8 +37,7 @@ export const ComicTitle = styled.Text`
   padding: 2px 0 0 10px;
   font-weight: bold;
 `;
-
-export const ComicImage = styled(Image)`
+export const ComicImage = styled.Image`
   margin: 8px 0 15px 15px;
   width: 120;
   height: 120px;

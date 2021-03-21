@@ -13,7 +13,7 @@ export function Header({ hasButton }: HeaderProps) {
     <MainHeader>
       <AntDesign
         name="arrowleft"
-        size={24}
+        size={32}
         color="#F0141E"
         onPress={() => navigation.goBack()}
       />
