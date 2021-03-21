@@ -7,7 +7,7 @@ interface OrderByButton {
   isActive: boolean;
 }
 
-export const Container = styled(KeyboardAwareScrollView)`
+export const Container = styled.View`
   flex: 1;
   background-color: ${props => props.theme.colors.background};
   margin: 8px;

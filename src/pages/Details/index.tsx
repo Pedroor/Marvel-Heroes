@@ -49,6 +49,9 @@ export function Details() {
             source={{
               uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
             }}
+            animation="slideInRight"
+            useNativeDriver
+            duration={1500}
           />
           <ComicTitle>{item.title}</ComicTitle>
         </View>
@@ -65,6 +68,9 @@ export function Details() {
       <Header hasButton={false} />
       <HeroImage
         source={{ uri: `${hero.thumbnail.path}.${hero.thumbnail.extension}` }}
+        animation="slideInRight"
+        useNativeDriver
+        duration={1500}
       />
       <Title>{hero.name}</Title>
       <Description>

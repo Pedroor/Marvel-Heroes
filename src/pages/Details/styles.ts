@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { s } from "react-native-size-matters";
+import * as Animatable from "react-native-animatable";
 
 export const Container = styled.ScrollView`
   flex: 1;
@@ -7,7 +8,7 @@ export const Container = styled.ScrollView`
   padding-top: ${s(20)};
 `;
 
-export const HeroImage = styled.Image`
+export const HeroImage = styled(Animatable.Image)`
   margin-bottom: 15px;
   width: 100%;
   height: ${s(250)};
@@ -42,7 +43,7 @@ export const ComicTitle = styled.Text`
   padding-left: ${s(10)};
   font-weight: bold;
 `;
-export const ComicImage = styled.Image`
+export const ComicImage = styled(Animatable.Image)`
   margin: 8px 0 15px 15px;
   width: ${s(120)};
   height: ${s(120)};
