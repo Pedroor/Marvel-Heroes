@@ -27,6 +27,7 @@ import {
 import { HeroTypes } from "../../common/types/Heroes";
 import { ComicsTypes } from "../../common/types/Comics";
 import { Loading } from "../../components/Loading";
+import { ErrorMessage } from "../../utils/index";
 
 type ParamList = {
   Details: {
@@ -83,6 +84,10 @@ export function Details() {
     return <Loading title={"Loading ..."} isError={false} />;
   }
 
+  if (useHeroComics.isError) {
+    ErrorMessage();
+    return <Loading title={"Something went wrong"} isError={true} />;
+  }
   return (
     <Container>
       <Header hasButton={false} hasGoBackButton={true} />

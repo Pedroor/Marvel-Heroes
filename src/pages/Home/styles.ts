@@ -37,8 +37,3 @@ export const OrderByButton = styled.Text<OrderByButton>`
   color: ${props => (props.isActive ? "red" : "black")};
   padding: 15px 0 0 3px;
 `;
-
-export const TitleName = styled.Text`
-  ${({ theme }) => theme.textVariants.title};
-  padding: 10px 0 0 10px;
-`;

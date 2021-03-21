@@ -36,7 +36,8 @@
     "react-native-size-matters": "^0.4.0",
     "react-native-web": "~0.13.12",
     "react-query": "^3.13.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "use-debounce": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

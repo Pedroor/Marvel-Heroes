@@ -5,13 +5,10 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Image,
 } from "react-native";
 import { useHeroesQuery } from "../../hooks/useHeroesQuery";
-import { s } from "react-native-size-matters";
-import { FontAwesome, AntDesign } from "@expo/vector-icons";
-import NotFound from "../../assets/notFound.gif";
 
+import { FontAwesome, AntDesign } from "@expo/vector-icons";
 import { HeroTypes } from "../../common/types/Heroes";
 
 import {
@@ -20,7 +17,6 @@ import {
   OrderByButton,
   Input,
   InputArea,
-  TitleName,
 } from "./styles";
 
 import { Header } from "../../components/Header";
@@ -29,20 +25,21 @@ import { Loading } from "../../components/Loading";
 import { ErrorMessage } from "../../utils/index";
 
 import { useFavoriteHeroes } from "../../hooks/useFavoriteHeroes";
+import { useDebounce } from "use-debounce";
 
 export function Home() {
   const [offSet, setOffSet] = useState(0);
-  const [name, setName] = useState("");
+  const [displayValue, setDisplayValue] = useState("");
+  const [value] = useDebounce(displayValue, 500);
   const [orderBy, setOrderBy] = useState("name");
   const [orderByButtonIsActive, setOrderByButtonIsActive] = useState(false);
 
   const flalistRef: React.RefObject<FlatList> = useRef(null);
 
   const { generateHtml, favoriteHeroes } = useFavoriteHeroes();
-  const heroesQuery = useHeroesQuery(name, orderBy, offSet);
+  const heroesQuery = useHeroesQuery(value, orderBy, offSet);
 
   useEffect(() => {
-    console.log(heroesQuery);
     generateHtml();
   }, [favoriteHeroes]);
 
@@ -88,9 +85,9 @@ export function Home() {
             <InputArea>
               <FontAwesome name="search" size={24} color="black" />
               <Input
-                value={name}
+                value={displayValue}
                 placeholder="Search for..."
-                onChangeText={value => setName(value)}
+                onChangeText={value => setDisplayValue(value)}
               />
             </InputArea>
             <OrderByButton isActive={orderByButtonIsActive}>A-Z</OrderByButton>
@@ -104,15 +101,17 @@ export function Home() {
             <InputArea>
               <FontAwesome name="search" size={24} color="black" />
               <Input
-                value={name}
+                value={displayValue}
                 placeholder="Search for..."
-                onChangeText={value => setName(value)}
+                onChangeText={value => setDisplayValue(value)}
               />
               <FontAwesome
                 name="trash-o"
                 size={24}
                 color="black"
-                onPress={() => setName("")}
+                onPress={() => {
+                  setDisplayValue("");
+                }}
               />
             </InputArea>
             <OrderByButton
