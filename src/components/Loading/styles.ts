@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
+import { s } from "react-native-size-matters";
 
 export const TitleName = styled.Text`
   ${({ theme }) => theme.textVariants.title};
-  padding: 80px 0 0 10px;
+
   text-align: center;
 `;

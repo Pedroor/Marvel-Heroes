@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { Image } from "react-native-expo-image-cache";
+import { s } from "react-native-size-matters";
 
 export const Container = styled.View`
   flex: 1;
@@ -9,21 +9,21 @@ export const Container = styled.View`
 export const InitialButton = styled.TouchableOpacity`
   background-color: #800319;
 
-  width: 160px;
-  height: 60px;
-  border-radius: 30px;
+  width: ${s(160)};
+  height: ${s(60)};
+  border-radius: ${s(30)};
 
   flex-direction: row;
   align-items: center;
   justify-content: center;
 
   position: absolute;
-  bottom: 0;
-  left: 60%;
+  bottom: ${s(30)};
+  left: ${s(190)};
 `;
 
 export const ButtonText = styled.Text`
   ${({ theme }) => theme.textVariants.body1};
   color: ${props => props.theme.colors.shape};
-  padding-left: 4px;
+  padding-left: ${s(4)};
 `;

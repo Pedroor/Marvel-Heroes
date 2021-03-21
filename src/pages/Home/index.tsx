@@ -33,12 +33,12 @@ export function Home() {
 
   const flalistRef: React.RefObject<FlatList> = useRef(null);
 
-  const { generateHtml } = useFavoriteHeroes();
+  const { generateHtml, favoriteHeroes } = useFavoriteHeroes();
   const heroesQuery = useHeroesQuery(name, orderBy, offSet);
 
   useEffect(() => {
     generateHtml();
-  }, []);
+  }, [favoriteHeroes]);
 
   const renderHeroCard: ListRenderItem<HeroTypes> = ({ item }) => {
     return <HeroCard item={item} />;
@@ -53,7 +53,7 @@ export function Home() {
     }
   }
 
-  function changePage(isIncrease: boolean) {
+  function handleChangePage(isIncrease: boolean) {
     if (isIncrease) {
       setOffSet(offSet + 20);
       flalistRef.current?.scrollToOffset({ animated: true, offset: 0 });
@@ -129,7 +129,7 @@ export function Home() {
                       alignItems: "center",
                     }}
                   >
-                    <TouchableOpacity onPress={() => changePage(false)}>
+                    <TouchableOpacity onPress={() => handleChangePage(false)}>
                       <View style={{ flexDirection: "row" }}>
                         <Text>Previous Page</Text>
                         <AntDesign
@@ -140,7 +140,7 @@ export function Home() {
                         />
                       </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => changePage(true)}>
+                    <TouchableOpacity onPress={() => handleChangePage(true)}>
                       <View style={{ flexDirection: "row" }}>
                         <AntDesign
                           name="right"

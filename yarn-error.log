@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /home/pedro/.npm-global/bin/yarn add @types/typesafe-actions -D
+  /usr/bin/node /home/pedro/.npm-global/bin/yarn add @types/react-native-size-matters -D
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/pedro/Android/Sdk/tools:/home/pedro/Android/Sdk/platform-tools:/home/pedro/.npm-global/bin:/home/pedro/Android/Sdk/tools:/home/pedro/Android/Sdk/platform-tools:/home/pedro/.npm-global/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2ftypesafe-actions: Not found
+  Error: https://registry.yarnpkg.com/@types%2freact-native-size-matters: Not found
       at Request.params.callback [as _callback] (/home/pedro/.npm-global/lib/node_modules/yarn/lib/cli.js:66988:18)
       at Request.self.callback (/home/pedro/.npm-global/lib/node_modules/yarn/lib/cli.js:140662:22)
       at Request.emit (events.js:315:20)
@@ -38,10 +38,10 @@ npm manifest:
     },
     "dependencies": {
       "@expo-google-fonts/montserrat": "^0.1.0",
+      "@react-native-community/async-storage": "^1.12.1",
       "@react-navigation/native": "^5.9.3",
       "@react-navigation/stack": "^5.14.3",
       "@types/md5": "^2.3.0",
-      "@types/react-native-html-to-pdf": "^0.8.0",
       "axios": "^0.21.1",
       "expo": "~40.0.0",
       "expo-app-loading": "^1.0.1",
@@ -56,19 +56,15 @@ npm manifest:
       "react": "16.13.1",
       "react-dom": "16.13.1",
       "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
-      "react-native-expo-image-cache": "^4.1.0",
       "react-native-flash-message": "^0.1.23",
       "react-native-gesture-handler": "~1.8.0",
-      "react-native-html-to-pdf": "^0.9.1",
       "react-native-reanimated": "~1.13.0",
       "react-native-safe-area-context": "3.1.9",
       "react-native-screens": "~2.15.2",
+      "react-native-size-matters": "^0.4.0",
       "react-native-web": "~0.13.12",
       "react-query": "^3.13.0",
-      "react-redux": "^7.2.2",
-      "redux": "^4.0.5",
-      "styled-components": "^5.2.1",
-      "typesafe-actions": "^5.1.0"
+      "styled-components": "^5.2.1"
     },
     "devDependencies": {
       "@babel/core": "~7.9.0",
@@ -76,8 +72,6 @@ npm manifest:
       "@types/react": "~16.9.35",
       "@types/react-dom": "~16.9.8",
       "@types/react-native": "~0.63.2",
-      "@types/react-redux": "^7.1.16",
-      "@types/redux": "^3.6.0",
       "@types/styled-components-react-native": "^5.1.1",
       "typescript": "~4.0.0"
     },
@@ -1152,7 +1146,7 @@ Lockfile:
       pirates "^4.0.0"
       source-map-support "^0.5.16"
   
-  "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
+  "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
     version "7.13.10"
     resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
     integrity sha512-4QPkjJq6Ns3V/RgpEahRk+AGfL0eO6RHHtTWoNNr5mO49G6B5+X6d6THgWEAvTrznU5xYpbAlVKRYcsCgh/Akw==
@@ -1765,6 +1759,13 @@ Lockfile:
       "@babel/runtime" "^7.7.2"
       regenerator-runtime "^0.13.3"
   
+  "@react-native-community/async-storage@^1.12.1":
+    version "1.12.1"
+    resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.12.1.tgz#25f821b4f6b13abe005ad67e47c6f1cee9f27b24"
+    integrity sha512-70WGaH3PKYASi4BThuEEKMkyAgE9k7VytBqmgPRx3MzJx9/MkspwqJGmn3QLCgHLIFUgF1pit2mWICbRJ3T3lg==
+    dependencies:
+      deep-assign "^3.0.0"
+  
   "@react-native-community/cli-debugger-ui@^4.13.1":
     version "4.13.1"
     resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-4.13.1.tgz#07de6d4dab80ec49231de1f1fbf658b4ad39b32c"
@@ -1932,7 +1933,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/hammerjs/-/hammerjs-2.0.39.tgz#4be64bbacf3813c79c0dab895c6b0fdc7d5e513f"
     integrity sha512-lYR2Y/tV2ujpk/WyUc7S0VLI0a9hrtVIN9EwnrNo5oSEJI2cK2/XrgwOQmXLL3eTulOESvh9qP6si9+DWM9cOA==
   
-  "@types/hoist-non-react-statics@*", "@types/hoist-non-react-statics@^3.3.0":
+  "@types/hoist-non-react-statics@*":
     version "3.3.1"
     resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
     integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
@@ -1991,27 +1992,12 @@ Lockfile:
     dependencies:
       "@types/react" "^16"
   
-  "@types/react-native-html-to-pdf@^0.8.0":
-    version "0.8.0"
-    resolved "https://registry.yarnpkg.com/@types/react-native-html-to-pdf/-/react-native-html-to-pdf-0.8.0.tgz#a1a3436b137998e64f75a4dd7bc7c4b990a47f2e"
-    integrity sha512-BEkAykVATnC1KwmBl4QcKm1ce9k/YZFHdK6WdShJpvJ7bnW/g5IGj1GMrvY7fXrt2Ad1zZjIz4/kWwWNbTk26w==
-  
   "@types/react-native@*", "@types/react-native@~0.63.2":
     version "0.63.52"
     resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.52.tgz#449beb4a413ec0f2c172cbf676a95f5b0952adf4"
     integrity sha512-sBXvvtJaIUSXQLDh9NZitx1KHkKUdBLZy34lFKJaIXtpHIh5OEbBXeyUTFBtFwjk/RD0tneAtUqsdhheZRzAzw==
     dependencies:
       "@types/react" "*"
-  
-  "@types/react-redux@^7.1.16":
-    version "7.1.16"
-    resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.16.tgz#0fbd04c2500c12105494c83d4a3e45c084e3cb21"
-    integrity sha512-f/FKzIrZwZk7YEO9E1yoxIuDNRiDducxkFlkw/GNMGEnK9n4K8wJzlJBghpSuOVDgEUHoDkDF7Gi9lHNQR4siw==
-    dependencies:
-      "@types/hoist-non-react-statics" "^3.3.0"
-      "@types/react" "*"
-      hoist-non-react-statics "^3.3.0"
-      redux "^4.0.0"
   
   "@types/react@*":
     version "17.0.3"
@@ -2038,13 +2024,6 @@ Lockfile:
     dependencies:
       "@types/prop-types" "*"
       csstype "^3.0.2"
-  
-  "@types/redux@^3.6.0":
-    version "3.6.0"
-    resolved "https://registry.yarnpkg.com/@types/redux/-/redux-3.6.0.tgz#f1ebe1e5411518072e4fdfca5c76e16e74c1399a"
-    integrity sha1-8evh5UEVGAcuT9/KXHbhbnTBOZo=
-    dependencies:
-      redux "*"
   
   "@types/scheduler@*":
     version "0.16.1"
@@ -2998,11 +2977,6 @@ Lockfile:
     version "0.0.2"
     resolved "https://registry.yarnpkg.com/crypt/-/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
     integrity sha1-iNf/fsDfuG9xPch7u0LQRNPmxBs=
-  
-  crypto-js@^3.1.9-1:
-    version "3.3.0"
-    resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
-    integrity sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==
   
   crypto-random-string@^1.0.0:
     version "1.0.0"
@@ -3964,7 +3938,7 @@ Lockfile:
     dependencies:
       source-map "^0.7.3"
   
-  hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
+  hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.0:
     version "3.3.2"
     resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
     integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -4688,7 +4662,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
     integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
   
-  lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.0:
+  lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.0:
     version "4.17.21"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
     integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -5725,7 +5699,7 @@ Lockfile:
       prop-types "^15.6.2"
       scheduler "^0.19.1"
   
-  react-is@^16.12.0, react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
+  react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
     version "16.13.1"
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
     integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -5734,14 +5708,6 @@ Lockfile:
     version "17.0.1"
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
     integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
-  
-  react-native-expo-image-cache@^4.1.0:
-    version "4.1.0"
-    resolved "https://registry.yarnpkg.com/react-native-expo-image-cache/-/react-native-expo-image-cache-4.1.0.tgz#649cbe9786249134d3eafed5baba50bbfa80c029"
-    integrity sha512-U6xHtuyalNZThhM11lu4+mRNSpJFkdh4dSLbWkKAj5QfY63cKlTnDVtv8c88njn71GHL4exEzf8hNKBMWhH37Q==
-    dependencies:
-      crypto-js "^3.1.9-1"
-      lodash "^4.17.4"
   
   react-native-flash-message@^0.1.23:
     version "0.1.23"
@@ -5760,11 +5726,6 @@ Lockfile:
       hoist-non-react-statics "^3.3.0"
       invariant "^2.2.4"
       prop-types "^15.7.2"
-  
-  react-native-html-to-pdf@^0.9.1:
-    version "0.9.1"
-    resolved "https://registry.yarnpkg.com/react-native-html-to-pdf/-/react-native-html-to-pdf-0.9.1.tgz#74caed6e4e7344ba4f8b3f49425410896b7c61be"
-    integrity sha512-aACv9A2i9A6FY5hi9zuhDSsJqea3yRpbpQu0/y1LGPk9DknE4c0CDDOI9qjEJv+wgBpS1gfQM+sezqVlZ8xtlA==
   
   react-native-iphone-x-helper@^1.2.1, react-native-iphone-x-helper@^1.3.0:
     version "1.3.1"
@@ -5794,6 +5755,11 @@ Lockfile:
     version "2.15.2"
     resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.15.2.tgz#a449700e895b462937211ec72ed6f09652758f06"
     integrity sha512-CagNf2APXkVoRlF3Mugr264FbKbrBg9eXUkqhIPVeZB8EsdS8XPrnt99yj/pzmT+yJMBY0dGrjXT8+68WYh6YQ==
+  
+  react-native-size-matters@^0.4.0:
+    version "0.4.0"
+    resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.4.0.tgz#01bfd0d59454318f4e0b13fe9c1eb0523d70f2e0"
+    integrity sha512-8/C0htHrFWeUm9N8JegmadovUfgTWkGBkDPZ1N3YkXtDWb+98Ya2gThiKcu445r8c7YhcrBfnHz/mYsXIusaOQ==
   
   react-native-web@~0.13.12:
     version "0.13.18"
@@ -5851,17 +5817,6 @@ Lockfile:
       broadcast-channel "^3.4.1"
       match-sorter "^6.0.2"
   
-  react-redux@^7.2.2:
-    version "7.2.2"
-    resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.2.tgz#03862e803a30b6b9ef8582dadcc810947f74b736"
-    integrity sha512-8+CQ1EvIVFkYL/vu6Olo7JFLWop1qRUeb46sGtIMDCSpgwPQq8fPLpirIB0iTqFe9XYEFPHssdX8/UwN6pAkEA==
-    dependencies:
-      "@babel/runtime" "^7.12.1"
-      hoist-non-react-statics "^3.3.2"
-      loose-envify "^1.4.0"
-      prop-types "^15.7.2"
-      react-is "^16.13.1"
-  
   react-refresh@^0.4.0:
     version "0.4.3"
     resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.4.3.tgz#966f1750c191672e76e16c2efa569150cc73ab53"
@@ -5893,14 +5848,6 @@ Lockfile:
       safe-buffer "~5.1.1"
       string_decoder "~1.1.1"
       util-deprecate "~1.0.1"
-  
-  redux@*, redux@^4.0.0, redux@^4.0.5:
-    version "4.0.5"
-    resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
-    integrity sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w==
-    dependencies:
-      loose-envify "^1.4.0"
-      symbol-observable "^1.2.0"
   
   regenerate-unicode-properties@^8.2.0:
     version "8.2.0"
@@ -6543,11 +6490,6 @@ Lockfile:
     dependencies:
       has-flag "^4.0.0"
   
-  symbol-observable@^1.2.0:
-    version "1.2.0"
-    resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
-    integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
-  
   temp-dir@^1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/temp-dir/-/temp-dir-1.0.0.tgz#0a7c0ea26d3a39afa7e0ebea9c1fc0bc4daa011d"
@@ -6669,11 +6611,6 @@ Lockfile:
     version "0.0.6"
     resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
     integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-  
-  typesafe-actions@^5.1.0:
-    version "5.1.0"
-    resolved "https://registry.yarnpkg.com/typesafe-actions/-/typesafe-actions-5.1.0.tgz#9afe8b1e6a323af1fd59e6a57b11b7dd6623d2f1"
-    integrity sha512-bna6Yi1pRznoo6Bz1cE6btB/Yy8Xywytyfrzu/wc+NFW3ZF0I+2iCGImhBsoYYCOWuICtRO4yHcnDlzgo1AdNg==
   
   typescript@~4.0.0:
     version "4.0.7"

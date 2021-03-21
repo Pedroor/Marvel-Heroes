@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { s } from "react-native-size-matters";
 import { HeroTypes } from "../../common/types/Heroes";
 import { DEFAULT_DESCRIPTION } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
@@ -64,7 +64,7 @@ export function HeroCard({ item }: HeroCardProps) {
               name="star"
               size={24}
               color={isColorStar ? "#eaf754" : "black"}
-              style={{ padding: 8 }}
+              style={{ padding: s(8) }}
               onPress={() => handleAddHeroToFavoriteList(item)}
             />
           ) : (
@@ -72,7 +72,7 @@ export function HeroCard({ item }: HeroCardProps) {
               name="star"
               size={24}
               color={"black"}
-              style={{ padding: 8 }}
+              style={{ padding: s(8) }}
               onPress={() => handleAddHeroToFavoriteList(item)}
             />
           )}
@@ -98,7 +98,7 @@ export function HeroCard({ item }: HeroCardProps) {
             size={24}
             color="black"
             style={{
-              paddingTop: 60,
+              paddingTop: s(60),
             }}
           />
         </DetailsButton>

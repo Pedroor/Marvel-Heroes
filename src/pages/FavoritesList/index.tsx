@@ -1,5 +1,6 @@
 import React from "react";
 import { FlatList, ListRenderItem, Alert } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 import { useFavoriteHeroes } from "../../hooks/useFavoriteHeroes";
 
 import { Header } from "../../components/Header";

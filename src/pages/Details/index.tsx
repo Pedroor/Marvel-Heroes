@@ -2,6 +2,7 @@ import React from "react";
 import { Header } from "../../components/Header";
 import { useHeroComicsQuery } from "../../hooks/useHeroComics";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { s } from "react-native-size-matters";
 import {
   FlatList,
   ListRenderItem,
@@ -43,7 +44,7 @@ export function Details() {
       <TouchableWithoutFeedback
         onPress={() => navigation.navigate("Comic", { item })}
       >
-        <View key={item.id} style={{ width: 140 }}>
+        <View key={item.id} style={{ width: s(140) }}>
           <ComicImage
             source={{
               uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
@@ -75,7 +76,7 @@ export function Details() {
         renderItem={renderComicCard}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        style={{ marginBottom: 10 }}
+        style={{ marginBottom: s(10) }}
       />
     </Container>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Image, View } from "react-native";
 import America from "../../assets/marvel.gif";
+import { s, ms } from "react-native-size-matters";
 
 import { TitleName } from "./styles";
 
@@ -18,7 +19,7 @@ export function Loading({ title }: LoadingProps) {
       }}
     >
       <TitleName>{title} </TitleName>
-      <Image source={America} style={{ width: 500, height: 500 }} />
+      <Image source={America} style={{ width: s(300), height: s(300) }} />
     </View>
   );
 }
