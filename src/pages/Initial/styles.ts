@@ -18,7 +18,7 @@ export const InitialButton = styled.TouchableOpacity`
   justify-content: center;
 
   position: absolute;
-  bottom: ${s(30)};
+  bottom: ${s(5)};
   left: ${s(190)};
 `;
 

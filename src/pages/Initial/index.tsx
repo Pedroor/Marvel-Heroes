@@ -2,7 +2,7 @@ import React from "react";
 import { Image } from "react-native";
 import { Container, InitialButton, ButtonText } from "./styles";
 import { useNavigation } from "@react-navigation/native";
-import avengers from "../../assets/avengers.jpg";
+import avengers from "../../assets/initialImage.jpg";
 import { AntDesign } from "@expo/vector-icons";
 
 export function Initial() {
