@@ -80,7 +80,7 @@ export function Details() {
   };
 
   if (useHeroComics.isLoading) {
-    return <Loading title={"Loading ..."} />;
+    return <Loading title={"Loading ..."} isError={false} />;
   }
 
   return (

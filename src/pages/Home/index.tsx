@@ -26,6 +26,7 @@ import {
 import { Header } from "../../components/Header";
 import { HeroCard } from "../../components/HeroCard";
 import { Loading } from "../../components/Loading";
+import { ErrorMessage } from "../../utils/index";
 
 import { useFavoriteHeroes } from "../../hooks/useFavoriteHeroes";
 
@@ -41,12 +42,18 @@ export function Home() {
   const heroesQuery = useHeroesQuery(name, orderBy, offSet);
 
   useEffect(() => {
+    console.log(heroesQuery);
     generateHtml();
   }, [favoriteHeroes]);
 
   const renderHeroCard: ListRenderItem<HeroTypes> = ({ item }) => {
     return <HeroCard item={item} />;
   };
+
+  if (heroesQuery.isError) {
+    ErrorMessage();
+    return <Loading title={"Something went wrong"} isError={true} />;
+  }
 
   function handleOrderByFunction() {
     if (orderBy.length === 4) {
@@ -88,7 +95,7 @@ export function Home() {
             </InputArea>
             <OrderByButton isActive={orderByButtonIsActive}>A-Z</OrderByButton>
           </ButtonContainer>
-          <Loading title={"Loading ..."} />
+          <Loading title={"Loading ..."} isError={false} />
         </Container>
       ) : (
         <Container>
@@ -118,19 +125,7 @@ export function Home() {
 
           {heroesQuery.data?.data.results !== undefined &&
             (heroesQuery.data?.data.results?.length === 0 ? (
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <TitleName>Not Found ): </TitleName>
-                <Image
-                  source={NotFound}
-                  style={{ width: s(300), height: s(300) }}
-                />
-              </View>
+              <Loading title={"Not Found ):"} isError={true} />
             ) : (
               <FlatList
                 data={heroesQuery.data?.data.results}

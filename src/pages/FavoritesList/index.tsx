@@ -73,7 +73,7 @@ export function FavoritesList() {
           <Header hasButton={false} hasGoBackButton={true} />
           <Title>Favorites List</Title>
           <MarvelImage source={marvelImage} resizeMode={"contain"} />
-          <Loading title={"Add new heroes to your list!"} />
+          <Loading title={"Add new heroes to your list!"} isError={false} />
         </>
       )}
     </Container>
