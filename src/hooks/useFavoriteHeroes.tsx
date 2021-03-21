@@ -7,6 +7,7 @@ import React, {
   useEffect,
 } from "react";
 import { showMessage } from "react-native-flash-message";
+import AsyncStorage from "@react-native-community/async-storage";
 import { HeroTypes } from "../common/types/Heroes";
 import { Alert } from "react-native";
 import * as Sharing from "expo-sharing";
@@ -20,6 +21,7 @@ interface FavoriteHeroesContextData {
   favoriteHeroes: HeroTypes[];
   handleAddHeroToFavoriteList: (hero: HeroTypes) => void;
   createPDF: () => Promise<void>;
+  generateHtml: () => Promise<void>;
 }
 
 export const FavoriteHeroesContext = createContext<FavoriteHeroesContextData>(
@@ -33,30 +35,45 @@ export function FavoriteHeroesProvider({
   const [html, setHtml] = useState("");
 
   useEffect(() => {
-    genarateHtml();
-  }, [favoriteHeroes]);
+    getStore();
+  }, []);
+
+  async function setStore(favoriteHeroes: HeroTypes[]) {
+    await AsyncStorage.setItem("@FavoriteList", JSON.stringify(favoriteHeroes));
+  }
+  async function getStore() {
+    let teste = await AsyncStorage.getItem("@FavoriteList");
+    if (teste) {
+      setFavoriteHeroes(JSON.parse(teste));
+    } else {
+      return;
+    }
+    generateHtml();
+  }
 
   async function createPDF() {
+    await generateHtml();
+
+    const { uri } = await Print.printToFileAsync({ html });
+    sharePDF(uri);
+  }
+
+  function sharePDF(uri: string) {
     const options = {
       mimeType: "application/pdf",
       dialogTitle: "Compartilhar Documento",
       UTI: "application/pdf",
     };
-
-    await genarateHtml();
-    const { uri } = await Print.printToFileAsync({ html });
-    Sharing.shareAsync(uri);
-    console.log(html, options);
+    Sharing.shareAsync(uri, options);
   }
 
-  async function genarateHtml() {
+  async function generateHtml() {
     let htmlString: string = "";
     htmlString = "<h1>Lista de personagens</h1>";
     await favoriteHeroes.map(hero => {
-      console.log(hero.name),
-        (htmlString += `<div> <h1>${hero.name}</h1> <img src="${hero.thumbnail.path}.${hero.thumbnail.extension}"  /></div>\n`);
+      htmlString += `<div> <h1>${hero.name}</h1> <img src="${hero.thumbnail.path}.${hero.thumbnail.extension}"  /></div>\n`;
     });
-    console.log(htmlString);
+
     setHtml(htmlString);
   }
 
@@ -75,16 +92,17 @@ export function FavoriteHeroesProvider({
           {
             text: "Yes",
             onPress: () => {
-              showMessage({
-                message: "Hero successfully added!",
-                description: "See your list of favorites on the home screen.",
-                type: "success",
-                icon: "auto",
-                floating: true,
-                duration: 2000,
-                position: "top",
-              }),
-                setFavoriteHeroes([...favoriteHeroes, hero]);
+              setFavoriteHeroes([...favoriteHeroes, hero]),
+                showMessage({
+                  message: "Hero successfully added!",
+                  description: "See your list of favorites on the home screen.",
+                  type: "success",
+                  icon: "auto",
+                  floating: true,
+                  duration: 2000,
+                  position: "top",
+                }),
+                setStore(favoriteHeroes);
             },
           },
         ],
@@ -116,6 +134,7 @@ export function FavoriteHeroesProvider({
                   duration: 2000,
                   position: "top",
                 });
+              setStore(favoriteHeroes);
             },
           },
         ],
@@ -126,7 +145,12 @@ export function FavoriteHeroesProvider({
 
   return (
     <FavoriteHeroesContext.Provider
-      value={{ favoriteHeroes, handleAddHeroToFavoriteList, createPDF }}
+      value={{
+        favoriteHeroes,
+        handleAddHeroToFavoriteList,
+        createPDF,
+        generateHtml,
+      }}
     >
       {children}
     </FavoriteHeroesContext.Provider>

@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, ListRenderItem } from "react-native";
+import { FlatList, ListRenderItem, Alert } from "react-native";
 import { useFavoriteHeroes } from "../../hooks/useFavoriteHeroes";
 
 import { Header } from "../../components/Header";
@@ -20,7 +20,28 @@ import {
 } from "./styles";
 
 export function FavoritesList() {
-  const { favoriteHeroes, createPDF } = useFavoriteHeroes();
+  const { favoriteHeroes, createPDF, generateHtml } = useFavoriteHeroes();
+
+  function handleSharePDF() {
+    generateHtml();
+    Alert.alert(
+      `You want share your Heroes List?`,
+      "",
+
+      [
+        {
+          text: "No",
+        },
+        {
+          text: "Yes",
+          onPress: () => {
+            createPDF();
+          },
+        },
+      ],
+      { cancelable: true }
+    );
+  }
 
   const renderHeroCard: ListRenderItem<HeroTypes> = ({ item }) => {
     return <HeroCard item={item} />;
@@ -36,7 +57,7 @@ export function FavoritesList() {
           <ShareMessage>
             Do you want to share your list with your friends?
           </ShareMessage>
-          <ShareButton onPress={() => createPDF()}>
+          <ShareButton onPress={() => handleSharePDF()}>
             <AntDesign name="sharealt" size={24} color="white" />
             <ButtonText>Share</ButtonText>
           </ShareButton>

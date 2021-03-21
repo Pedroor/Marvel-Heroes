@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   FlatList,
   ListRenderItem,
@@ -23,6 +23,8 @@ import { Header } from "../../components/Header";
 import { HeroCard } from "../../components/HeroCard";
 import { Loading } from "../../components/Loading";
 
+import { useFavoriteHeroes } from "../../hooks/useFavoriteHeroes";
+
 export function Home() {
   const [offSet, setOffSet] = useState(0);
   const [name, setName] = useState("");
@@ -31,7 +33,12 @@ export function Home() {
 
   const flalistRef: React.RefObject<FlatList> = useRef(null);
 
+  const { generateHtml } = useFavoriteHeroes();
   const heroesQuery = useHeroesQuery(name, orderBy, offSet);
+
+  useEffect(() => {
+    generateHtml();
+  }, []);
 
   const renderHeroCard: ListRenderItem<HeroTypes> = ({ item }) => {
     return <HeroCard item={item} />;
