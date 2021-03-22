@@ -21,7 +21,7 @@
 ## :page_with_curl: Sobre
 Este repositório contém uma pouco da história dos heróis da Marvel.
 
-Marvel-Heroes é uma aplicação no qual o usuário pode visualizar uma listagem de super-heróis, buscar e ver os detalhes de um herói específico, como as quadrinho no qual ele teve alguma participação,etc... Para obter os dados dos Pokémons foi utilizada a [MarvelAPI](https://developer.marvel.com/).
+Marvel-Heroes é uma aplicação no qual o usuário pode visualizar uma listagem de super-heróis, buscar e ver os detalhes de um herói específico, como as quadrinho no qual ele teve alguma participação,etc... Para obter os dados dos Heróis foi utilizada a [MarvelAPI](https://developer.marvel.com/).
 
 O objetivo principal desse projeto foi colocar meus conhecimentos em React-Native na prática com uma quantidade expressiva de dados sem perca de performance por isso dou todos os meus créditos aos criadores do React-Query (https://react-query.tanstack.com/).
 
