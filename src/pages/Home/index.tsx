@@ -49,7 +49,25 @@ export function Home() {
 
   if (heroesQuery.isError) {
     ErrorMessage();
-    return <Loading title={"Something went wrong"} isError={true} />;
+    return (
+      <>
+        <Container>
+          <Header hasButton={true} hasGoBackButton={false} />
+          <ButtonContainer>
+            <InputArea>
+              <FontAwesome name="search" size={24} color="black" />
+              <Input
+                value={displayValue}
+                placeholder="Search for..."
+                onChangeText={value => setDisplayValue(value)}
+              />
+            </InputArea>
+            <OrderByButton isActive={orderByButtonIsActive}>A-Z</OrderByButton>
+          </ButtonContainer>
+          <Loading title={"Something went wrong"} isError={true} />
+        </Container>
+      </>
+    );
   }
 
   function handleOrderByFunction() {

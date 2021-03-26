@@ -86,7 +86,14 @@ export function Details() {
 
   if (useHeroComics.isError) {
     ErrorMessage();
-    return <Loading title={"Something went wrong"} isError={true} />;
+    return (
+      <>
+        <Container>
+          <Header hasButton={true} hasGoBackButton={true} />
+          <Loading title={"Something went wrong"} isError={true} />
+        </Container>
+      </>
+    );
   }
   return (
     <Container>
