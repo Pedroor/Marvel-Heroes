@@ -39,7 +39,7 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 - [Styled Components](https://styled-components.com/)
 - [@expo/vector-icons](https://docs.expo.io/guides/icons/)
 - [VS Code](https://code.visualstudio.com/) com [Prettier](https://prettier.io/)
-
+.
 ## :books: Requisitos
 - Ter [**Git**](https://git-scm.com/) para clonar o projeto.
 - Ter [**Node.js**](https://nodejs.org/en/) instalado.
